@@ -1,8 +1,16 @@
-import yt_dlp # if you don't have the yt-dlp package then first install it to use this.You can use pip install yt-dlp
+import yt_dlp
 
-def download_video(url):
-    ydl_opts = {'format': 'best'}
+
+def download_all_formats(url):
+    # List and download all available formats
+    ydl_opts = {
+        'format': 'all',  # Download all formats
+        'outtmpl': '%(title)s-%(format_id)s.%(ext)s',  # Name the file with the format ID and extension
+    }
+
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
         ydl.download([url])
 
-download_video("https://youtu.be/LRaU4rEna8s?si=sa1lmPUBodZC8N1a") # Here you have to paste the link of your Youtube video which you have to download
+
+# Replace this with your YouTube video link
+download_all_formats("https://youtu.be/6-1CwFumx_M?si=lFSECAEm8GR5p6ch")
